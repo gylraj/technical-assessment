@@ -1,12 +1,17 @@
 # build environment
-FROM node:13.12.0-alpine as build
+FROM node:15.4 as build
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
-ENV PORT 8080
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm ci --silent
-RUN npm install react-scripts@3.4.1 -g --silent
-COPY . ./
-EXPOSE 8080
-CMD ["npm", "run", "start"]
+
+COPY package*.json .
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+
+FROM nginx:1.19
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/build /usr/share/nginx/html
+
