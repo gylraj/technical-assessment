@@ -7,7 +7,7 @@
 
 - 📫 How to reach me **gianolivar@gmail.com**
 
-- 📄 Know about my experiences [https://drive.google.com/file/d/1kO9ZfKhXzHOlz1J2Oz-Qg1m43L2Oensj/view?usp=sharing](https://drive.google.com/file/d/1kO9ZfKhXzHOlz1J2Oz-Qg1m43L2Oensj/view?usp=sharing)
+- 📄 Know about my experiences [my resume](https://drive.google.com/file/d/1kO9ZfKhXzHOlz1J2Oz-Qg1m43L2Oensj/view?usp=sharing)
 
 - ⚡ Fun fact **I'm much happier talking to NPC than real human**
 
