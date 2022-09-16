@@ -1,49 +1,32 @@
-import React, { useMemo } from "react";
-import Spinner from "react-bootstrap/Spinner";
-import Table from "react-bootstrap/Table";
-
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
+import { Col, Container, Row } from "react-bootstrap";
+import DeviceCard from "./DeviceCard";
+import styled from "styled-components";
 
-const Records = ({ data, isLoading }) => {
-  const Items = useMemo(() => {
-    if (isLoading) {
-      return (
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      );
-    }
+const Records = ({ data }) => {
+  const navigate = useNavigate();
 
-    return data.map((item, i) => (
-      <tr key={`${i}-${item.mId}`}>
-        <td>{item.mId} </td>
-        <td>
-          <img
-            width={100}
-            src={item.mMobileImageUrl}
-            alt={"ima"}
-            loading="lazy"
-          />
-        </td>
-        <td>{item.mShortDisplayName} </td>
-        <td>$ {item.msrp} </td>
-      </tr>
-    ));
-  }, [isLoading, data]);
+  const deviceList = data.map((item, i) => {
+    return (
+      <Col xs={12} md={3} lg={3} key={`item ${item.mId}`} className="mb-6">
+        <DeviceCard device={item} onClick={() => navigate(`/${item.mId}`)} />
+      </Col>
+    );
+  });
 
   return (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Image</th>
-          <th scope="col">Device Name</th>
-          <th scope="col">SRP</th>
-        </tr>
-      </thead>
-      <tbody>{Items}</tbody>
-    </Table>
+    <>
+      <Wrapper>
+        <Row>{deviceList}</Row>
+      </Wrapper>
+    </>
   );
 };
+
+const Wrapper = styled(Container)`
+  margin: 50px 0;
+`;
 
 export default Records;
